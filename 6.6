@@ -1,0 +1,19 @@
+
+public class MultiplicationTable {
+
+    public static void printTable(int number) {
+        System.out.println("Multiplication Table of " + number + ":");
+        System.out.println("------------------------------");
+
+        for (int i = 1; i <= 10; i++) {
+            int result = number * i;
+            System.out.printf("%d * %d = %d%n", number, i, result);
+        }
+        System.out.println("------------------------------");   
+    }
+
+public static void main(String[] args) {
+    int number = 5;
+    printTable(number);
+}
+}
