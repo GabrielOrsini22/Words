@@ -1,0 +1,25 @@
+import java.util.Scanner;
+public class GuessingGame {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int secretNumber = 5;
+        int guess = 0; 
+
+        System.out.println("Hello to the GuessingGame Game!");
+        System.out.println("Try to guess the secret number between 1 and 10.");
+
+        while (guess != secretNumber) {
+            System.out.println("Enter you guess: ");
+            guess = scanner.nextInt();
+           if (guess < secretNumber) {
+            System.out.println("The number is higher. Try again");
+           } else if (guess > secretNumber) {
+            System.out.println("The number is lower. Try again");
+           } else {
+            System.out.println("Congratulations! You guessed the secret number: "+ secretNumber);
+           }
+        }
+        scanner.close();
+    }
+}
