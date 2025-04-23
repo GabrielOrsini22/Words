@@ -1,0 +1,124 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class CalculatorGUI extends JFrame implements ActionListener {
+    JTextField display;
+    String current = "", operator = "";
+    double num1 = 0, num2 = 0;
+
+    public CalculatorGUI() {
+        setTitle("Calculator");
+        setSize(340, 460);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        display = new JTextField();
+        display.setEditable(false);
+        display.setFont(new Font("Arial", Font.BOLD, 24));
+        add(display, BorderLayout.NORTH);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(6, 4, 5, 5));
+        String[] buttons = {
+            "7", "8", "9", "/",
+            "4", "5", "6", "*",
+            "1", "2", "3", "-",
+            "0", ".", "%", "+",
+            "C", "√", "^", "=",
+            "!", "", "", ""
+        };
+
+        for (String text : buttons) {
+            if (text.equals("")) {
+                panel.add(new JLabel()); // espaço vazio
+            } else {
+                JButton button = new JButton(text);
+                button.setFont(new Font("Arial", Font.BOLD, 18));
+                button.addActionListener(this);
+                panel.add(button);
+            }
+        }
+
+        add(panel, BorderLayout.CENTER);
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        String cmd = e.getActionCommand();
+
+        if (cmd.matches("[0-9\\.]")) {
+            current += cmd;
+            display.setText(current);
+        } else if (cmd.matches("[+\\-*/%^]")) {
+            if (!current.isEmpty()) {
+                num1 = Double.parseDouble(current);
+                operator = cmd;
+                current = "";
+                display.setText("");
+            }
+        } else if (cmd.equals("=")) {
+            if (!current.isEmpty()) {
+                num2 = Double.parseDouble(current);
+                double result = 0;
+
+                switch (operator) {
+                    case "+": result = num1 + num2; break;
+                    case "-": result = num1 - num2; break;
+                    case "*": result = num1 * num2; break;
+                    case "/":
+                        if (num2 != 0) result = num1 / num2;
+                        else {
+                            display.setText("Error: ÷ 0");
+                            return;
+                        }
+                        break;
+                    case "%": result = (num1 * num2) / 100; break;
+                    case "^": result = Math.pow(num1, num2); break;
+                }
+
+                display.setText(String.valueOf(result));
+                current = String.valueOf(result);
+            }
+        } else if (cmd.equals("√")) {
+            if (!current.isEmpty()) {
+                double value = Double.parseDouble(current);
+                if (value >= 0) {
+                    double result = Math.sqrt(value);
+                    display.setText(String.valueOf(result));
+                    current = String.valueOf(result);
+                } else {
+                    display.setText("Error: √ of negative");
+                }
+            }
+        } else if (cmd.equals("!")) {
+            if (!current.isEmpty()) {
+                try {
+                    int n = Integer.parseInt(current);
+                    if (n >= 0) {
+                        long fact = 1;
+                        for (int i = 1; i <= n; i++) {
+                            fact *= i;
+                        }
+                        display.setText(String.valueOf(fact));
+                        current = String.valueOf(fact);
+                    } else {
+                        display.setText("Error: Negative !");
+                    }
+                } catch (NumberFormatException ex) {
+                    display.setText("Error: Invalid !");
+                }
+            }
+        } else if (cmd.equals("C")) {
+            current = "";
+            operator = "";
+            num1 = 0;
+            num2 = 0;
+            display.setText("");
+        }
+    }
+
+    public static void main(String[] args) {
+        new CalculatorGUI();
+    }
+}
