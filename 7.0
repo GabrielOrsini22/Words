@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class MenuProgram {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int option;
+
+        System.out.println("Menu:");
+        System.out.println("1 - Hamburger");
+        System.out.println("2 - Pizza");
+        System.out.println("3 - Salad");
+        System.out.println("4 - Exit");
+        System.out.print("Choose an option (1 to 4): ");
+        
+        option = scanner.nextInt();
+
+        switch (option) {
+            case 1:
+                System.out.println("You chose Hamburger.");
+                break;
+            case 2:
+                System.out.println("You chose Pizza.");
+                break;
+            case 3:
+                System.out.println("You chose Salad.");
+                break;
+            case 4:
+                System.out.println("Exiting the menu...");
+                break;
+            default:
+                System.out.println("Invalid option.");
+        }
+
+        scanner.close();
+    }
+}
