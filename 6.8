@@ -1,0 +1,15 @@
+public class AllMultiplicationTables {
+    public static void main(String[] args) {
+        System.out.println("==== MULTIPLICATION TABLES FROM 1 TO 10 ====\n");
+
+        for (int number = 1; number <= 10; number++) {
+            System.out.println("Table of " + number + ":");
+
+            for (int i = 1; i <= 10; i++) {
+                System.out.println(number + " x " + i + " = " + (number * i));
+            }
+
+            System.out.println(); // blank line between tables
+        }
+    }
+}
