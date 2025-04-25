@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class SalesBonusCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String sellerName;
+        double fixedSalary, bonus = 0, finalSalary;
+        int totalSales;
+
+        
+        System.out.print("Enter the seller's name: ");
+        sellerName = scanner.nextLine();
+
+        System.out.print("Enter the fixed salary: ");
+        fixedSalary = scanner.nextDouble();
+
+        System.out.print("Enter the total number of sales made: ");
+        totalSales = scanner.nextInt();
+
+        if (totalSales >= 20) {
+            bonus = fixedSalary * 0.15;
+            finalSalary = fixedSalary + bonus;
+
+            System.out.println("\nGoal reached! 🎉");
+            System.out.println("Seller: " + sellerName);
+            System.out.printf("Fixed Salary: $%.2f%n", fixedSalary);
+            System.out.printf("Bonus (15%%): $%.2f%n", bonus);
+            System.out.printf("Total Salary Received: $%.2f%n", finalSalary);
+        } else {
+            System.out.println("\nGoal not reached.");
+            System.out.println("Seller: " + sellerName);
+            System.out.printf("Fixed Salary: $%.2f%n", fixedSalary);
+        }
+
+        scanner.close();
+    }
+}
