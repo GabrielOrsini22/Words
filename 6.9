@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class VotingEligibility {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        final int CURRENT_YEAR = 2025;
+        int birthYear;
+        int age;
+
+        System.out.print("Enter your birth year: ");
+        birthYear = scanner.nextInt();
+
+        age = CURRENT_YEAR - birthYear;
+
+        System.out.println("You are " + age + " years old.");
+
+        if (age < 16) {
+            System.out.println("Not eligible to vote.");
+        } else if ((age >= 16 && age < 18) || (age > 70)) {
+            System.out.println("Voting is optional.");
+        } else {
+            System.out.println("Voting is mandatory.");
+        }
+
+        scanner.close();
+    }
+}
