@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class InstallmentPurchase {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double totalPurchase, installment;
+
+        System.out.print("Enter the total purchase amount: ");
+        totalPurchase = scanner.nextDouble();
+
+        installment = totalPurchase / 5;
+
+        System.out.printf("Total purchase amount: $%.2f%n", totalPurchase);
+        System.out.printf("Each of the 5 installments: $%.2f%n", installment);
+
+        scanner.close();
+    }
+}
