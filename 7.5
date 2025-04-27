@@ -1,0 +1,32 @@
+
+import java.util.Scanner;
+
+public class TemperatureConverter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Temparature Corverter");
+        System.out.println("Choose an option:");
+        System.out.println("1 - Celsius to Fahrenheit");
+        System.out.println("2 - Celsius to Kelvin");
+        System.out.print("Enter your choice: ");
+        int choice = scanner.nextInt();
+
+        System.out.println("Enter the temperature in Celsius: ");
+        double celsius = scanner.nextDouble();
+        double result;
+
+        switch (choice) {
+            case 1:
+             result = (celsius * 9 / 5)+32;
+             System.out.println("Temperature in Fahrenheit: " + result);
+                break;
+             case 2:
+             result = celsius + 273.15;
+             System.out.println("Temperature in Kelvin: " + result);
+                break;
+             default:
+             System.out.println("Invalid option. Please run the program again and choose 1 or 2.");   
+        }
+        scanner.close();
+    }
+}
