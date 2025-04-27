@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class MenuLanches {
+    public static void main(String[] args) {
+        inicio();
+    }
+
+    static void inicio() {
+        Scanner scanner = new Scanner(System.in);
+        int opcao;
+
+        System.out.println("Cardapio:");
+        System.out.println("1 - Hamburguer");
+        System.out.println("2 - Pizza");
+        System.out.println("3 - Salada");
+        System.out.println("4 - Sair");
+        System.out.print("Escolha uma opcao (1 a 4): ");
+        opcao = scanner.nextInt(); 
+
+        switch (opcao) {
+            case 1: 
+                System.out.println("Voce escolheu o Hamburguer.");
+                break;
+            case 2: 
+                System.out.println("Voce escolheu Pizza.");
+                break;
+            case 3: 
+                System.out.println("Voce escolheu Salada.");
+                break;
+            case 4: 
+                System.out.println("Saindo do cardapio...");
+                break;
+            default:
+                System.out.println("Opcao invalida.");
+                break;
+        }
+        scanner.close();
+    }
+}
