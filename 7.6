@@ -1,0 +1,48 @@
+
+import java.util.Scanner;
+
+public class CarRental {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        final double PRICE_PER_DAY = 90.0;
+        final double PRICE_PER_KM = 0.20;
+        Boolean continueRenting = true;
+
+        System.out.println("=== Welcome to the Car Rental Service ===");
+
+        while (continueRenting) {
+            System.out.println("\nPrice Table:");
+            System.out.printf("%-20s R$%.2f%n", "Daily Rate:", PRICE_PER_DAY);
+            System.out.printf("%-20s R$%.2f%n", "Per KM Rate:", PRICE_PER_KM);
+            System.out.println("------------------------------------------");
+
+            System.out.println("Enter the number of days rented: ");
+            int days = scanner.nextInt();
+            System.out.print("Enter the number of kilometers driven: ");
+            double kilometers = scanner.nextDouble();
+
+            double totalDays = days * PRICE_PER_DAY;
+            double totalKilometers = kilometers * PRICE_PER_KM;
+            double totalPrice = totalDays + totalKilometers;
+
+            System.out.println("\n----- Rental Receipt -----");
+            System.out.printf("%-25s %5d x R$%.2f = R$%.2f%n", "Days rented:", days, PRICE_PER_DAY, totalDays);
+            System.out.printf("%-25s %5.2f x R$%.2f = R$%.2f%n", "Kilometers driven:", kilometers, PRICE_PER_KM, totalKilometers);
+            System.out.println("--------------------------------------------");
+            System.out.printf("%-25s R$%.2f%n", "Total amount to pay:", totalPrice);
+            System.out.println("---------------- Thank you! ----------------");
+
+            System.out.print("\nWould you like to rent another car? (yes/no): ");
+            scanner.nextLine(); // consume leftover newline
+            String answer = scanner.nextLine().toLowerCase();
+
+            if (!answer.equals("yes")) {
+                continueRenting = false;
+                System.out.println("Goodbye! See you next time!");
+            }
+        }
+
+        scanner.close();
+    }
+}
