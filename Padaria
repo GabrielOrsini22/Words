@@ -1,0 +1,94 @@
+
+import javax.swing.*;
+
+public class PadariaGUI {
+    public static void main(String[] args) {
+        int qtdFrances = 0, qtdIntegral = 0, qtdDoceLiso = 0, qtdDoceFarofa = 0, qtdForma = 0;
+        double precoFrances = 1.04, precoIntegral = 1.04, precoDoceLiso = 1.08, precoDoceFarofa = 1.11, precoForma = 0.95;
+
+        String menu = """
+                ------------ PADARIA ------------
+                [1] Pão Francês - R$ 1.04
+                [2] Pão Integral - R$ 1.04
+                [3] Pão Doce Liso - R$ 1.08
+                [4] Pão Doce Farofa - R$ 1.11
+                [5] Pão de Forma - R$ 0.95
+                [6] Finalizar Compra
+                ---------------------------------
+                """;
+
+        int opcao = 0;
+
+        while (opcao != 6) {
+            String escolha = JOptionPane.showInputDialog(null, menu + "\nEscolha sua opção:", "Menu da Padaria", JOptionPane.QUESTION_MESSAGE);
+
+            if (escolha == null) break; 
+
+            try {
+                opcao = Integer.parseInt(escolha);
+                switch (opcao) {
+                    case 1 -> {
+                        int qtd = solicitarQuantidade("Pão Francês");
+                        qtdFrances += qtd;
+                    }
+                    case 2 -> {
+                        int qtd = solicitarQuantidade("Pão Integral");
+                        qtdIntegral += qtd;
+                    }
+                    case 3 -> {
+                        int qtd = solicitarQuantidade("Pão Doce Liso");
+                        qtdDoceLiso += qtd;
+                    }
+                    case 4 -> {
+                        int qtd = solicitarQuantidade("Pão Doce Farofa");
+                        qtdDoceFarofa += qtd;
+                    }
+                    case 5 -> {
+                        int qtd = solicitarQuantidade("Pão de Forma");
+                        qtdForma += qtd;
+                    }
+                    case 6 -> JOptionPane.showMessageDialog(null, "Finalizando compra...");
+                    default -> JOptionPane.showMessageDialog(null, "⚠️ Opção inválida!");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "❌ Digite um número válido.");
+            }
+        }
+
+        
+        double valFrances = qtdFrances * precoFrances;
+        double valIntegral = qtdIntegral * precoIntegral;
+        double valDoceLiso = qtdDoceLiso * precoDoceLiso;
+        double valDoceFarofa = qtdDoceFarofa * precoDoceFarofa;
+        double valForma = qtdForma * precoForma;
+
+        double total = valFrances + valIntegral + valDoceLiso + valDoceFarofa + valForma;
+
+       
+        StringBuilder recibo = new StringBuilder("------------ RECIBO ------------\n");
+        if (qtdFrances > 0) recibo.append(qtdFrances).append(" x Pão Francês = R$ ").append(String.format("%.2f", valFrances)).append("\n");
+        if (qtdIntegral > 0) recibo.append(qtdIntegral).append(" x Pão Integral = R$ ").append(String.format("%.2f", valIntegral)).append("\n");
+        if (qtdDoceLiso > 0) recibo.append(qtdDoceLiso).append(" x Pão Doce Liso = R$ ").append(String.format("%.2f", valDoceLiso)).append("\n");
+        if (qtdDoceFarofa > 0) recibo.append(qtdDoceFarofa).append(" x Pão Doce Farofa = R$ ").append(String.format("%.2f", valDoceFarofa)).append("\n");
+        if (qtdForma > 0) recibo.append(qtdForma).append(" x Pão de Forma = R$ ").append(String.format("%.2f", valForma)).append("\n");
+
+        recibo.append("\nTOTAL A PAGAR: R$ ").append(String.format("%.2f", total)).append("\n");
+        recibo.append("--------------------------------");
+
+        JOptionPane.showMessageDialog(null, recibo.toString(), "Recibo Final", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private static int solicitarQuantidade(String tipoPao) {
+        while (true) {
+            String input = JOptionPane.showInputDialog(null, "Digite a quantidade de " + tipoPao + ":", "Quantidade", JOptionPane.QUESTION_MESSAGE);
+            if (input == null) return 0;
+            try {
+                int qtd = Integer.parseInt(input);
+                if (qtd >= 0) return qtd;
+                else JOptionPane.showMessageDialog(null, "❌ Digite um número positivo.");
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "❌ Valor inválido. Tente novamente.");
+            }
+        }
+    }
+}
