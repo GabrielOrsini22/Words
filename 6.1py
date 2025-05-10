@@ -1,0 +1,3 @@
+number= float(input("Digite um number: ")) 
+dobro = number*2
+print (f"O dobro do {number} e {dobro}")
