@@ -1,0 +1,12 @@
+sum = 0
+
+while True:
+    try:
+        number = int(input("Enter an integer (0 to stop): "))
+        sum += number
+        if number == 0:
+            break
+    except ValueError:
+        print("Invalid input. Please enter a valid integer.")
+
+print(f"The total sum of the numbers entered is: {sum}")
