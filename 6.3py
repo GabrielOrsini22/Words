@@ -1,0 +1,12 @@
+
+grade1 = float(input("Enter the first grade: "))
+grade2 = float(input("Enter the second grade: "))
+
+average = (grade1 + grade2) / 2
+
+print(f"Average: {average:.2f}")
+
+if average >= 7:
+    print("Result: Approved")
+else:
+    print("Result: Failed")
