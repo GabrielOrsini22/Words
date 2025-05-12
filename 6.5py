@@ -1,0 +1,19 @@
+name = ""
+age = 0
+
+while name == "":
+    name = input("Enter your name: ").strip()
+    if name == "":
+        print("Invalid name. Please try again.")
+
+while age <= 0:
+    try:
+        age = int(input("Enter your age: "))
+        if age <= 0:
+            print("Invalid age. Age must be greater than 0.")
+    except ValueError:
+        print("Invalid input. Please enter a valid number.")
+
+print("\nRegistration Successful!")
+print("Name:", name)
+print("Age:", age)
