@@ -1,0 +1,12 @@
+def main():
+    print("==== MULTIPLICATION TABLES FROM 1 TO 10 ====\n")
+
+    for number in range(1, 11):
+        print(f"Table of {number}:")
+
+        for i in range(1, 11):
+            print(f"{number} x {i} = {number * i}")
+
+        print()  
+if __name__ == "__main__":
+    main()
