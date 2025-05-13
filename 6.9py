@@ -1,0 +1,17 @@
+def main():
+    CURRENT_YEAR = 2025
+
+    birth_year = int(input("Enter your birth year: "))
+    age = CURRENT_YEAR - birth_year
+
+    print(f"You are {age} years old.")
+
+    if age < 16:
+        print("Not eligible to vote.")
+    elif 16 <= age < 18 or age > 70:
+        print("Voting is optional.")
+    else:
+        print("Voting is mandatory.")
+
+if __name__ == "__main__":
+    main()
