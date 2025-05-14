@@ -1,0 +1,15 @@
+def main():
+    try:
+        kilometers = float(input("Enter the number of kilometers traveled: "))
+        liters = float(input("Enter the number of liters of fuel consumed: "))
+
+        if liters > 0:
+            consumption = kilometers / liters
+            print(f"The car's fuel consumption is {consumption:.2f} kilometers per liter.")
+        else:
+            print("Cannot divide by zero. Please check the amount of fuel entered.")
+    except ValueError:
+        print("Invalid input. Please enter numeric values.")
+
+if __name__ == "__main__":
+    main()
