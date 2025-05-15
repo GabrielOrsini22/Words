@@ -1,0 +1,34 @@
+def main():
+    PRICE_PER_DAY = 90.0
+    PRICE_PER_KM = 0.20
+    continue_renting = True
+
+    print("=== Welcome to the Car Rental Service ===")
+
+    while continue_renting:
+        print("\nPrice Table:")
+        print(f"{'Daily Rate:':<20} R${PRICE_PER_DAY:.2f}")
+        print(f"{'Per KM Rate:':<20} R${PRICE_PER_KM:.2f}")
+        print("------------------------------------------")
+
+        days = int(input("Enter the number of days rented: "))
+        kilometers = float(input("Enter the number of kilometers driven: "))
+
+        total_days = days * PRICE_PER_DAY
+        total_kilometers = kilometers * PRICE_PER_KM
+        total_price = total_days + total_kilometers
+
+        print("\n----- Rental Receipt -----")
+        print(f"{'Days rented:':<25} {days:5d} x R${PRICE_PER_DAY:.2f} = R${total_days:.2f}")
+        print(f"{'Kilometers driven:':<25} {kilometers:5.2f} x R${PRICE_PER_KM:.2f} = R${total_kilometers:.2f}")
+        print("--------------------------------------------")
+        print(f"{'Total amount to pay:':<25} R${total_price:.2f}")
+        print("---------------- Thank you! ----------------")
+
+        answer = input("\nWould you like to rent another car? (yes/no): ").strip().lower()
+        if answer != "yes":
+            continue_renting = False
+            print("Goodbye! See you next time!")
+
+if __name__ == "__main__":
+    main()
