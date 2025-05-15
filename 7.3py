@@ -1,0 +1,24 @@
+def main():
+    seller_name = input("Enter the seller's name: ")
+    fixed_salary = float(input("Enter the fixed salary: "))
+    total_sales = int(input("Enter the total number of sales made: "))
+
+    bonus = 0
+    final_salary = fixed_salary
+
+    if total_sales >= 20:
+        bonus = fixed_salary * 0.15
+        final_salary += bonus
+
+        print("\nGoal reached! 🎉")
+        print(f"Seller: {seller_name}")
+        print(f"Fixed Salary: ${fixed_salary:.2f}")
+        print(f"Bonus (15%): ${bonus:.2f}")
+        print(f"Total Salary Received: ${final_salary:.2f}")
+    else:
+        print("\nGoal not reached.")
+        print(f"Seller: {seller_name}")
+        print(f"Fixed Salary: ${fixed_salary:.2f}")
+
+if __name__ == "__main__":
+    main()
