@@ -1,0 +1,10 @@
+def main():
+    total_purchase = float(input("Enter the total purchase amount: "))
+
+    installment = total_purchase / 5
+
+    print(f"Total purchase amount: ${total_purchase:.2f}")
+    print(f"Each of the 5 installments: ${installment:.2f}")
+
+if __name__ == "__main__":
+    main()
